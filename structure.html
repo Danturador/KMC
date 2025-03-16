@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Структура кофемашины</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 100px 20px 20px 20px;
+            background-color: #f0f0f0;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 2vw;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #555;
+        }
+        .content {
+            margin-top: 60px;
+        }
+        .element-list {
+            margin: 20px 0;
+        }
+        .element-list li {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+        .image-display {
+            margin-top: 20px;
+        }
+        .image-display img {
+            max-width: 100%;
+            height: auto;
+        }
+        .photo {
+            margin: 0 auto;
+            max-width: 15%;
+            height: auto;
+        }
+        #displayed-image {
+            width: 10vw;
+            height: auto;
+        }
+        @media (max-width: 500px) {
+            .photo {
+                max-width: 100%; 
+                margin: 5px 0;
+            }
+            #displayed-image {
+                width: 50vw;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">  
+        <a href="theory.html" class="menu-item">История создания кофемашины</a>
+        <a href="structure.html" class="menu-item">Структура кофемашины</a>
+        <a href="simulator.html" class="menu-item">Симулятор кофемашины</a>
+    </div>
+
+    <div class="content">
+        <img class="photo" src="./Img/MainBG.jpg" alt="Основное изображение кофемашины">
+        <img class="photo" src="./Img/frontSide.jpg" alt="Передняя сторона кофемашины">
+        <img class="photo" src="./Img/rightSide.jpg" alt="Правая сторона кофемашины">
+        <img class="photo" src="./Img/leftSide.jpg" alt="Левая сторона кофемашины">
+
+        <h1>Структура кофемашины</h1>
+        <div class="image-display">
+            <img id="displayed-image" src="./Img/temostat.PNG" alt="Изображение элемента">
+        </div>
+
+        <ul class="element-list">
+            <li data-image="./Img/corpus.jpg">Корпус</li>
+            <li data-image="./Img/vypusknoj_agregat.jpg">Выпускной агрегат</li>
+            <li data-image="./Img/podnos.jpg">Поднос</li>
+            <li data-image="./Img/bak_s_vodoj.jpg">Бак с водой</li>
+            <li data-image="./Img/bak_s_otkhodami.jpg">Бак с отходами</li>
+            <li data-image="./Img/shejker.jpg">Шейкер</li>
+        </ul>
+    </div>
+
+    <h2>Карта кофемашины</h2>
+    <iframe scrolling-y="no"
+        style="width: 100%; height: 450px; overflow-y: hidden"
+        title="map"
+        src="/CoffeeMachineMap/КартаКофемашины.html"
+        frameborder="0"></iframe>
+
+    <h2>Принцип работы кофемашины</h2>
+    <video controls style="width: 800px; height: 500px">
+        <source src="instraction.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        const items = document.querySelectorAll('.element-list li');
+        const displayedImage = document.getElementById('displayed-image');
+
+        items.forEach(item => {
+            item.addEventListener('click', function() {
+                const imageUrl = this.getAttribute('data-image');
+                displayedImage.src = imageUrl;
+            });
+        });
+    </script>
+</body>
+</html>
